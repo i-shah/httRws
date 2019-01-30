@@ -16,31 +16,6 @@ searchHTTrChem <- function(txt){
     }
 }   
 
-#' Get the raw HTTr count data by epa_sample_id
-#' 
-#' @param epa_sample_id A valid epa_sample_id from searchHTTrChem
-#' @param probe_filter removes probes that don't meet minimum requirements
-#'    mx0_5:  probe maximum greater than 5
-#'    av0_10: probe average greater than 10
-#'    md0_20: probe median greater than 20
-#'                    
-#' @return a named list with two dataframes
-#'    treatments: all treatment factors (columns) x samples (rows)
-#'    counts: all probe counts (columns) x samples (rows)         
-#' @examples
-#' Get count data for TP0001718N03 and keep probes with average > 100
-#'  getHTTrCountData('TP0001718N03',probe_filter='av0_100')         
-#' @export                                                
-getHTTrCountData <- function(epa_sample_id,probe_filter='av0_10'){
-    D1 = getDataFromWS('getChemData',
-                       list("chem_id"=epa_sample_id,
-                            "probe_filter",probe_filter))
-      
-    if(!is.null(D1$treatments) & !is.null(D1$treatments)){
-        list(treatments=list2df(D1$treatments),
-             counts=list2df(D1$counts))
-    }
-}
 
 #' Get the raw HTTr count data by epa_sample_id
 #' 
@@ -55,9 +30,9 @@ getHTTrCountData <- function(epa_sample_id,probe_filter='av0_10'){
 #'    counts: all probe counts (columns) x samples (rows)                   
 #' @examples
 #' Get count data for TP0001718N03 and keep probes with average > 100
-#'  getChemProbeCounts('TP0001718N03',probe_filter='av0_100')          
+#'  getHTTrProbeCounts('TP0001718N03',probe_filter='av0_100')          
 #' @export                                                                        
-getChemProbeCounts <- function(epa_sample_id,
+getHTTrProbeCounts <- function(epa_sample_id,
                                probe_filter='av0_10'){
     D1 = getDataFromWS('getChemProbeCounts',
                        list(chem_id=epa_sample_id,
