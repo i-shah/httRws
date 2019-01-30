@@ -23,6 +23,5 @@ a named list with two dataframes
 Get the raw HTTr count data by epa_sample_id
 }
 \examples{
-Get count data for TP0001718N03 and keep probes with average > 100
  getHTTrProbeCounts('TP0001718N03',probe_filter='av0_100')          
 }

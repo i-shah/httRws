@@ -16,6 +16,5 @@ A dataframe with
 Get the  HTTr plate information for a plate_id
 }
 \examples{
-Get plates for plate_id=TC00284691
  getHTTrPlateInfo('TC00284691')      
 }

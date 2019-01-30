@@ -17,6 +17,5 @@ A named list
 Get the  HTTr plate_ids for a chemical
 }
 \examples{
-Get plates for TP0001718A17
  getHTTrChemPlates('TP0001718A17')      
 }

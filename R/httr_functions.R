@@ -1,4 +1,4 @@
-                    
+#'
 #' Finds HTTr chemicals
 #' 
 #' `searchHTTrChem` returns the HTTr chemicals than match the input string pattern. 
@@ -8,7 +8,7 @@
 #' searchHTTrChem('phtha')                                  
 #' @export                        
 searchHTTrChem <- function(txt){
-    D1 = getDataFromWS('searchChem',
+    D1 <- getDataFromWS('searchChem',
                        list("txt"=txt))
 
     if(!is.null(D1$hits)){
@@ -29,12 +29,11 @@ searchHTTrChem <- function(txt){
 #'    treatments: all treatment factors (columns) x samples (rows)
 #'    counts: all probe counts (columns) x samples (rows)                   
 #' @examples
-#' Get count data for TP0001718N03 and keep probes with average > 100
 #'  getHTTrProbeCounts('TP0001718N03',probe_filter='av0_100')          
 #' @export                                                                        
 getHTTrProbeCounts <- function(epa_sample_id,
                                probe_filter='av0_10'){
-    D1 = getDataFromWS('getChemProbeCounts',
+    D1 <- getDataFromWS('getChemProbeCounts',
                        list(chem_id=epa_sample_id,
                             probe_filter=probe_filter))
       
@@ -51,7 +50,6 @@ getHTTrProbeCounts <- function(epa_sample_id,
 #' @return A named list 
 #'    plates: all plate_ids with chemical
 #' @examples
-#' Get plates for TP0001718A17
 #'  getHTTrChemPlates('TP0001718A17')      
 #' @export                                                                             
 getHTTrChemPlates <- function(epa_sample_id){
@@ -67,7 +65,6 @@ getHTTrChemPlates <- function(epa_sample_id){
 #' @return A dataframe with 
 #'    
 #' @examples
-#' Get plates for plate_id=TC00284691
 #'  getHTTrPlateInfo('TC00284691')      
 #' @export                                       
 getHTTrPlateInfo <- function(plate_id){
@@ -117,26 +114,15 @@ getHTTrPlateGroups <- function(){
 #'    l2fc:  all L2FC data by probe_id/genen (columns) x treatment groups (rows)
 #'    index: the index columns in the L2FC dataframe 
 #' @examples
-#'   Get all the probes with differential expression information for DTXSID7020182
 #'     X <- getHTTrDEG('DTXSID7020182')
-#'
-#'   ... above chemical and subset of probes with average count > 100 per replicate 
 #'     X <- getHTTrDEG('DTXSID7020182',mncnt0=100)
-#'
-#'   ... above and just subset of probes unadjusted p-value <= 0.05   
 #'     X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.05)
-#'
-#'   ... above and just subset of probes unadjusted |l2fc0| >= 2   
 #'     X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.05,l2fc0=2)
-#'
-#'   ... above and pivot on gene symbol and take the max of l2fc values    
-#'     X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.1,l2fc0=0.6,
-#'                      pivot_on='gene', pivot_func='max')
+#'     X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.1,l2fc0=0.6,pivot_on='gene', pivot_func='max')
 #'
 #' @export                                                      
 getHTTrDEG <- function(sid,mncnt0=NULL,p0=NULL,l2fc0=NULL,
-                        pivot_on=NULL,pivot_func=NULL,
-                        svc=SVC){
+                        pivot_on=NULL,pivot_func=NULL){
     Q = list(dsstox_sid=sid)
     
     if (!is.null(pivot_on)){

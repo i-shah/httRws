@@ -5,7 +5,7 @@
 \title{Gets the effect of each chemical treatment on probes}
 \usage{
 getHTTrDEG(sid, mncnt0 = NULL, p0 = NULL, l2fc0 = NULL,
-  pivot_on = NULL, pivot_func = NULL, svc = SVC)
+  pivot_on = NULL, pivot_func = NULL)
 }
 \arguments{
 \item{sid}{A valid dsstox_sid (e.g. from searchHTTrChem)}
@@ -46,20 +46,10 @@ Note:
  c) Keep the skinny format without pivoting if you want to see all the data
 }
 \examples{
-  Get all the probes with differential expression information for DTXSID7020182
     X <- getHTTrDEG('DTXSID7020182')
-
-  ... above chemical and subset of probes with average count > 100 per replicate 
     X <- getHTTrDEG('DTXSID7020182',mncnt0=100)
-
-  ... above and just subset of probes unadjusted p-value <= 0.05   
     X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.05)
-
-  ... above and just subset of probes unadjusted |l2fc0| >= 2   
     X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.05,l2fc0=2)
-
-  ... above and pivot on gene symbol and take the max of l2fc values    
-    X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.1,l2fc0=0.6,
-                     pivot_on='gene', pivot_func='max')
+    X <- getHTTrDEG('DTXSID7020182',mncnt0=100,p0=0.1,l2fc0=0.6,pivot_on='gene', pivot_func='max')
 
 }

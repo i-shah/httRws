@@ -13,3 +13,6 @@ RoxygenNote: 6.1.1
 Packaged: 2019-01-30 17:08:18 UTC; ishah
 Author: Imran Shah [aut, cre]
 Maintainer: Imran Shah <Shah.Imran@epa.gov>
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
