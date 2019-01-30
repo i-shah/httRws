@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-## httRws
+# httRws
 
- httRws: A package to access the EPA/ORD/NCCT high-throughput transcriptomics (HTTr) data.  
+ A package to access the EPA/ORD/NCCT high-throughput transcriptomics (HTTr) data.  
 
  The httRws package provides functions to search for chemicals that have been run in the HTTr 
  platform and to retreive the raw and processed data on a probe / gene level. These functions
@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
  Currently, these webservices are only available on the EPA intranet at (httr-dev.epa.gov) and are
  for internal development and testing purposes only.   
  
-### Study and treatment
+## Study and treatment
 
  Use searchHTTrChem to find chemicals by searching the name/partial name/regex. Enter a zero space  
  string will retrieve all chemicals. This function returns a dataframe with all the information
@@ -40,7 +40,7 @@ knitr::opts_chunk$set(
  design information.
 
 
-### Raw HTTr data
+## Raw HTTr data
 
  Use getHTTrProbeCounts to get the raw HTTr data in terms of probe counts using the epa_sample_id. Currently, there are
  ~21,111 probes and the raw count associated with these probes can be obtained at a sample level.
@@ -48,7 +48,7 @@ knitr::opts_chunk$set(
  filtering the data (e.g. average count > 10, median count > 50, etc.)
 
 
-### Processed HTTr data
+## Processed HTTr data
 
  Use getHTTrDEG to get the differentially expressed probes/genes for each chemical by dsstox_sid
  calculated by DESeq2 by comparing each treatment (chemical,concentration) vs DMSO control counts for
