@@ -3,7 +3,7 @@
 
 
 list2df <- function(X){
-    data.frame(t(sapply(X,function(x) unlist(x))))
+    type.convert(data.frame(t(sapply(X,function(x) unlist(x)))))
 }
 
 getDataFromWS <- function(cmd,Q){
